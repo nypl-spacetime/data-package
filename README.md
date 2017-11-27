@@ -1,6 +1,6 @@
 # data-package
 
-Creates a [Data Package](http://frictionlessdata.io/data-packages/)for [NYC Space/Time Directory](http://spacetime.nypl.org) datasets.
+Node.js module to create a [Data Package](http://frictionlessdata.io/data-packages/) from an[NYC Space/Time Directory](http://spacetime.nypl.org) dataset.
 
 ## See also
 
