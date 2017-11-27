@@ -1,0 +1,25 @@
+{
+  "name": "@spacetime/data-package",
+  "version": "0.0.1",
+  "description": "Creates Data Package files for NYC Space/Time Directory datasets",
+  "main": "index.js",
+  "devDependencies": {
+    "standard": "^6.0.8"
+  },
+  "bin": {
+    "spacetime-data-package": "index.js"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nypl-spacetime/data-package.git"
+  },
+  "author": "Bert Spaan",
+  "license": "MIT",
+  "dependencies": {
+    "spacetime-config": "github:nypl-spacetime/spacetime-config",
+    "spacetime-schemas": "github:nypl-spacetime/spacetime-schemas"
+  }
+}
