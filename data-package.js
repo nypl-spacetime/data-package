@@ -1,7 +1,7 @@
 function generate (dataset, schemas, etlResults) {
   const id = dataset.id
 
-  const dataSchema = Object.assign({}, schemas.objects.properties.data, dataset.fields)
+  const dataSchema = Object.assign({}, schemas.objects.properties.data, dataset.schema)
 
   const objectsSchema = Object.assign({}, schemas.objects)
   objectsSchema.properties.data = dataSchema
@@ -12,13 +12,6 @@ function generate (dataset, schemas, etlResults) {
     description: 'ZIP file containing all the files in this dataset',
     mediatype: 'application/zip',
     path: `${id}.zip`
-  }, {
-    name: 'dataset',
-    format: 'json',
-    description: 'NYC Space/Time Directory dataset descriptor',
-    mediatype: 'application/json',
-    path: `${id}.dataset.json`,
-    schema: schemas.dataset
   }]
 
   if (etlResults.stats.objects) {
