@@ -16,19 +16,25 @@ function generate (dataset, schemas, etlResults) {
 
   if (etlResults.stats.objects) {
     resources.push({
-      name: `${id}.objects`,
+      name: `${id}.objects.ndjson`,
       format: 'ndjson',
       description: 'NDJSON file with all the objects in the dataset',
       mediatype: 'application/x-ndjson',
       path: `${id}.objects.ndjson`,
       schema: objectsSchema,
       stats: etlResults.stats.objects
+    }, {
+      name: `${id}.csv`,
+      format: 'csv',
+      description: 'All objects from ${id}.objects.ndjson, with data object flattened to separate fields according to flattenPaths in Dataset descriptor',
+      mediatype: 'text/csv',
+      path: `${id}.csv`
     })
   }
 
   if (etlResults.stats.relations) {
     resources.push({
-      name: `${id}.relations`,
+      name: `${id}.relations.ndjson`,
       format: 'ndjson',
       description: 'NDJSON file with all the relations in the dataset',
       mediatype: 'application/x-ndjson',
@@ -40,7 +46,7 @@ function generate (dataset, schemas, etlResults) {
 
   if (etlResults.stats.logs) {
     resources.push({
-      name: `${id}.logs`,
+      name: `${id}.log.ndjson`,
       format: 'ndjson',
       description: 'NDJSON file with log messages of issues encountered during ETL process',
       mediatype: 'application/x-ndjson',
@@ -62,6 +68,12 @@ function generate (dataset, schemas, etlResults) {
       description: `Random sample of 100 Features from ${id}.geojson`,
       mediatype: 'application/json',
       path: `${id}.sample.geojson`
+    }, {
+      name: `${id}.flattened.geojson`,
+      format: 'geojson',
+      description: `Same as ${id}.geojson, but with data object flattened according to flattenPaths in Dataset descriptor; this makes using the file with QGIS easier`,
+      mediatype: 'application/json',
+      path: `${id}.flattened.geojson`
     })
   }
 
