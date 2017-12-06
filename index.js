@@ -50,13 +50,19 @@ function createDataPackage (datasetId, step) {
 
 if (require.main === module) {
   if (process.argv.length !== 3) {
-    throw new Error('Please supply dataset ID and step as command line arguments, in form `datasetId.step`')
+    console.error('Please supply dataset ID and step as command line arguments, in form `datasetId.step`')
+    process.exit(1)
   }
 
   const datasetStep = process.argv[2]
   const [datasetId, step] = datasetStep.split('.')
 
-  const results = createDataPackage(datasetId, step)
+  try {
+    const results = createDataPackage(datasetId, step)
+  } catch (err) {
+    console.error(err.message)
+    process.exit(1)
+  }
 
   const datasetDir = getDatasetDir(datasetId, step)
   const readmeFilename = path.join(datasetDir, README_FILENAME)
