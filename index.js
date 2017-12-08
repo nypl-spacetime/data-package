@@ -57,8 +57,9 @@ if (require.main === module) {
   const datasetStep = process.argv[2]
   const [datasetId, step] = datasetStep.split('.')
 
+  let results
   try {
-    const results = createDataPackage(datasetId, step)
+    results = createDataPackage(datasetId, step)
   } catch (err) {
     console.error(err.message)
     process.exit(1)
